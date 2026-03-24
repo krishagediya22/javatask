@@ -1,15 +1,15 @@
+// 07...concatination staringtyp
 using System;
 
 class demo
 {
     static void Main()
     {
-		string a="bca";
-		//we can assign string data
-        Console.WriteLine(a);
-		a+=" hello";
-	    Console.WriteLine(a);
-        Console.ReadLine();
+			string name=krisha;
+			string surname=gediya;
+	
+		Console.WriteLine(name+""+surname);
+	    Console.WriteLine();
 
     }
 }

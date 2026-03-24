@@ -1,92 +1,85 @@
-//duplicate value
+//duplicate value...
 using System;
-
-class Program
+class demo
 {
-    static void Main()
-    {
-        Console.Write("Enter number of rows: ");
-        int rows = Convert.ToInt32(Console.ReadLine());
-
-        Console.Write("Enter number of columns: ");
-        int cols = Convert.ToInt32(Console.ReadLine());
-
-        int[,] arr = new int[rows, cols];
-
-        Console.WriteLine("Enter elements:");
-        for (int i = 0; i < rows; i++)
+	static void Main()
+	{	
+		
+		Console.WriteLine("enter row size:");
+		int r=Convert.ToInt32(Console.ReadLine());
+		Console.WriteLine("enter colom size:");
+		int c=Convert.ToInt32(Console.ReadLine());
+		int [,] a=new int[r,c];
+		
+		
+		Console.WriteLine("Enter elements of 2D array:");
+        for (int i=0;i<a.GetLength(0);i++)
         {
-            for (int j = 0; j < cols; j++)
+            for (int j=0;j<a.GetLength(1);j++)
             {
-                Console.Write("Element [" + i + "," + j + "]: ");
-                arr[i, j] = Convert.ToInt32(Console.ReadLine());
-            }
+				a[i,j] =Convert.ToInt32(Console.ReadLine());
+				
+               
+		  }
         }
-
-        Console.WriteLine("\nArray in tabular format:");
-        for (int i = 0; i < rows; i++)
+		Console.WriteLine("tabular format:");
+        for (int i=0;i<a.GetLength(0);i++)
         {
-            for (int j = 0; j < cols; j++)
+            for (int j=0;j<a.GetLength(1);j++)
             {
-                Console.Write(arr[i, j] + "\t");
-            }
-            Console.WriteLine();
-        }
+					Console.Write(arr[i, j]+"/t");
+			}
+				Console.WriteLine();
+		
+		} 
+		Console.WriteLine("duplicate value:");
+		
+		bool found = false;
+		for(int i=0; i<a.GetLength(0); i++)
+		{
+			for (int j=0;j<a.GetLength(1);j++)
+			{
+				
+				bool alreadyCounted = false;
+				 for (int x=0;x<a.GetLength(0);x++)
+				 {
+					for (int y=0;y<a.GetLength(1);y++)
+					{
+						if(x ==i && y==j)
+						goto CHECK_COUNT;
+					
+						if (arr[x,y] ==arr[i,j])
+						{
+								alreadyCounted = true;
+								goto CHECK_COUNT;
 
-        Console.WriteLine("\nDuplicate values:");
 
-        bool found = false;
-
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
-                bool alreadyCounted = false;
-
-                // Check if this value appeared earlier
-                for (int x = 0; x < rows; x++)
-                {
-                    for (int y = 0; y < cols; y++)
-                    {
-                        if (x == i && y == j)
-                            goto CHECK_COUNT;
-
-                        if (arr[x, y] == arr[i, j])
-                        {
-                            alreadyCounted = true;
-                            goto CHECK_COUNT;
-                        }
-                    }
-                }
-
-            CHECK_COUNT:
-
-                if (alreadyCounted)
-                    continue;
-
-                int count = 0;
-
-                // Count occurrences
-                for (int x = 0; x < rows; x++)
-                {
-                    for (int y = 0; y < cols; y++)
-                    {
-                        if (arr[x, y] == arr[i, j])
-                            count++;
-                    }
-                }
-
-                if (count > 1)
-                {
-                    Console.WriteLine(arr[i, j] + " count " + count + " times");
-                    found = true;
-                }
-            }
-        }
-
-        if (!found)
-        {
-            Console.WriteLine("No duplicate values found.");
-        }
-    }
+						}
+					}
+				 }	
+				 CHECK_COUNT;
+				 if(alreadyCounted)
+					 continue;
+				 
+				 int count = 0;
+				  for (int x=0;x<a.GetLength(0);x++)
+				 {
+					for (int y=0;y<a.GetLength(1);y++)
+					{
+						if (arr[x,y] ==arr[i,j])
+							count++;
+					}
+				 }
+					if(count>1)
+					{
+						Console.WriteLine(arr[i,j]+"appears"+count+"times");
+						found=true;
+					}
+			}
+		}
+		if(!found)
+		{
+			Console.WriteLine("no duplicate value found:");
+		}
+		}
 }

@@ -1,4 +1,4 @@
-//2d_jagged array from get user
+// 17...2d_jagged array from get userr
 using System;
 class Program
 {

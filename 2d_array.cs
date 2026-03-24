@@ -1,10 +1,10 @@
-// 13... tabular format 2d array get from the user size and element
+// 11....2 d array from get user row and colom sizw.and element                   
 using System;
 class demo
 {
 	static void Main()
 	{	
-		
+		int sum=0;
 		Console.WriteLine("enter row size:");
 		int r=Convert.ToInt32(Console.ReadLine());
 		Console.WriteLine("enter colom size:");
@@ -21,7 +21,7 @@ class demo
             for (int j=0;j<a.GetLength(1);j++)
             {
 				a[i,j] =Convert.ToInt32(Console.ReadLine());
-				
+				//sum=i+j;
                
 		  }
         }
@@ -29,12 +29,13 @@ class demo
 		{
 				for(int j=0;j<a.GetLength(1);j++)
 				{ 
-					Console.Write("["+i+","+j+"]="+a[i, j]+"\t");
+					Console.WriteLine("["+i+","+j+"]="+a[i,j]);
+					//Console.WriteLine(a[i,j]);
+					sum+=a[i,j];
 				}
-				Console.WriteLine();
 		
 		} 
-		
+		Console.WriteLine("sum:"+sum);
 		Console.ReadLine();
 }
 }
